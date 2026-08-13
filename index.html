@@ -5,19 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drishti Parekh — Portfolio</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
   :root{
-    --bg: #FAFAFC;
-    --ink: #14121F;
-    --ink-soft: #6B6879;
-    --card: #FFFFFF;
-    --line: #ECEAF3;
-    --indigo: #5B3DF6;
-    --coral: #FF5D6C;
-    --amber: #FFB23E;
-    --lime: #C6F135;
-    --grad: linear-gradient(120deg, var(--indigo), var(--coral) 55%, var(--amber));
+    --bg: #0A0A0E;
+    --bg-alt: #111117;
+    --card: #141420;
+    --line: #232330;
+    --text: #E9E7F2;
+    --text-dim: #8B899C;
+    --accent: #FF4FD8;
+    --accent2: #B18CFF;
+    --green: #6EE7B7;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -25,267 +24,149 @@
 
   body{
     background: var(--bg);
-    color: var(--ink);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 42px 42px;
+    background-attachment: fixed;
+    color: var(--text);
     font-family:'Inter', sans-serif;
-    line-height:1.5;
-    overflow-x:hidden;
+    line-height:1.6;
   }
 
-  .wrap{ max-width: 1000px; margin:0 auto; padding: 0 32px; position:relative; }
+  a{ color:inherit; }
+  .wrap{ max-width: 980px; margin:0 auto; padding: 0 32px; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky; top:0; z-index:50;
+    background: rgba(10,10,14,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 980px; margin:0 auto; padding: 16px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-logo{ font-family:'JetBrains Mono', monospace; font-size:13px; color: var(--accent); }
+  .nav-links{ display:flex; gap:26px; font-family:'JetBrains Mono', monospace; font-size:12.5px; }
+  .nav-links a{ text-decoration:none; color: var(--text-dim); transition: color .2s ease; }
+  .nav-links a:hover{ color: var(--accent); }
 
   /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding: 100px 0 90px;
-    overflow:hidden;
-  }
-  .orb{
-    position:absolute;
-    border-radius:50%;
-    filter: blur(60px);
-    opacity:.55;
-    z-index:0;
-    animation: float 14s ease-in-out infinite;
-  }
-  .orb1{ width:340px; height:340px; background:var(--indigo); top:-120px; right:-60px; }
-  .orb2{ width:260px; height:260px; background:var(--coral); bottom:-80px; right:220px; animation-delay:-4s; }
-  .orb3{ width:200px; height:200px; background:var(--amber); top:60px; left:-60px; animation-delay:-8s; }
-
-  @keyframes float{
-    0%,100%{ transform: translate(0,0) scale(1); }
-    50%{ transform: translate(20px,-30px) scale(1.08); }
-  }
-
-  .hero-content{ position:relative; z-index:1; }
-
+  .hero{ padding: 90px 0 70px; }
   .eyebrow{
-    display:inline-block;
-    font-family:'JetBrains Mono', monospace;
-    font-size:12.5px;
-    font-weight:500;
-    letter-spacing:.06em;
-    background: var(--ink);
-    color: var(--bg);
-    padding:6px 14px;
-    border-radius:100px;
-    margin-bottom:24px;
-    opacity:0;
-    animation: rise .6s ease forwards;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    color: var(--green); border:1px solid var(--line);
+    background: var(--bg-alt);
+    padding:6px 14px; border-radius:100px; margin-bottom:26px;
   }
+  .dot{ width:6px; height:6px; border-radius:50%; background: var(--green); animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.3; } }
 
   h1{
-    font-family:'Space Grotesk', sans-serif;
+    font-family:'JetBrains Mono', monospace;
     font-weight:700;
-    font-size: clamp(48px, 7.5vw, 84px);
-    letter-spacing:-0.02em;
-    line-height:1.0;
-    opacity:0;
-    animation: rise .7s ease .1s forwards;
+    font-size: clamp(34px, 5.5vw, 56px);
+    line-height:1.25;
+    letter-spacing:-0.01em;
   }
-  h1 .accent{
-    background: var(--grad);
-    background-size: 200% 200%;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation: rise .7s ease .1s forwards, gradientshift 6s ease infinite;
-  }
+  h1 .accent{ color: var(--accent); }
 
-  @keyframes gradientshift{
-    0%,100%{ background-position: 0% 50%; }
-    50%{ background-position: 100% 50%; }
-  }
+  .role-line{ margin-top:22px; font-size:16.5px; color: var(--text-dim); max-width: 560px; }
 
-  .role-line{
-    margin-top:20px;
-    font-size:18px;
-    color: var(--ink-soft);
-    max-width: 540px;
-    opacity:0;
-    animation: rise .7s ease .2s forwards;
+  .contact-row{ margin-top:34px; display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-size:13px; text-decoration:none;
+    border:1px solid var(--line); padding:10px 18px; border-radius:8px;
+    color: var(--text); transition: all .2s ease; background: var(--bg-alt);
   }
-
-  .contact-row{
-    margin-top:32px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    opacity:0;
-    animation: rise .7s ease .3s forwards;
-  }
-  .contact-row a{
-    text-decoration:none;
-    color: var(--ink);
-    font-size:13.5px;
-    font-weight:500;
-    border:1.5px solid var(--line);
-    padding:9px 16px;
-    border-radius:100px;
-    transition: all .2s ease;
-    background: var(--card);
-  }
-  .contact-row a:hover{
-    border-color: var(--ink);
-    transform: translateY(-2px);
-  }
-  .contact-row a.primary{
-    background: var(--ink);
-    color: var(--bg);
-    border-color: var(--ink);
-  }
-  .contact-row a.primary:hover{ background: var(--indigo); border-color: var(--indigo); }
-
-  @keyframes rise{
-    from{ opacity:0; transform: translateY(14px); }
-    to{ opacity:1; transform: translateY(0); }
-  }
+  .btn:hover{ border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn.primary{ background: var(--accent); color:#0A0A0E; border-color: var(--accent); font-weight:600; }
+  .btn.primary:hover{ background: var(--accent2); border-color: var(--accent2); color:#0A0A0E; }
 
   /* ---------- SECTIONS ---------- */
-  .section{ padding: 64px 0; position:relative; z-index:1; }
-  .section-head{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    margin-bottom: 36px;
-  }
-  .section-num{
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px;
-    color:#fff;
-    background: var(--grad);
-    width:30px; height:30px;
-    border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    flex-shrink:0;
-  }
-  .section-title{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:26px;
+  .section{ padding: 60px 0; border-top: 1px solid var(--line); }
+  .section-tag{
+    font-family:'JetBrains Mono', monospace; font-size:13px; color: var(--accent);
+    letter-spacing:.08em; margin-bottom: 30px; display:block;
   }
 
-  .about-text{ max-width:620px; font-size:16.5px; color:#3D3B4A; }
-  .skills{ margin-top:26px; display:flex; flex-wrap:wrap; gap:10px; }
-  .skill{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12.5px;
-    font-weight:500;
-    background: var(--bg);
-    border:1.5px solid var(--line);
-    padding:7px 14px;
-    border-radius:100px;
-    transition: all .2s ease;
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items:start; }
+  .about-text{ color:#C9C7D6; font-size:15.5px; }
+  .about-text b{ color: var(--text); }
+  .about-text .highlight{ color: var(--accent2); font-weight:500; }
+
+  .terminal{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow:hidden;
   }
-  .skill:hover{ border-color: var(--indigo); color: var(--indigo); transform: translateY(-2px); }
+  .terminal-bar{
+    display:flex; align-items:center; gap:8px;
+    padding: 10px 14px;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--line);
+  }
+  .tdot{ width:10px; height:10px; border-radius:50%; }
+  .tdot.r{ background:#FF5F56; } .tdot.y{ background:#FFBD2E; } .tdot.g{ background:#27C93F; }
+  .terminal-title{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color: var(--text-dim); margin-left:6px; }
+  .terminal-body{ padding: 20px 22px; font-family:'JetBrains Mono', monospace; font-size:13px; line-height:1.9; }
+  .kw{ color: var(--accent); } .str{ color: var(--green); } .cmt{ color: var(--text-dim); }
 
   /* ---------- PROJECT CARDS ---------- */
-  .project-grid{ display:grid; gap:22px; }
-
+  .project-grid{ display:grid; gap: 20px; }
   .project-card{
-    position:relative;
     background: var(--card);
-    border:1.5px solid var(--line);
-    border-radius: 20px;
-    padding: 30px 30px 26px;
-    overflow:hidden;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 26px 28px;
+    transition: border-color .2s ease, transform .2s ease;
   }
-  .project-card::before{
-    content:"";
-    position:absolute;
-    top:-40%; right:-20%;
-    width:200px; height:200px;
-    border-radius:50%;
-    filter: blur(50px);
-    opacity:.35;
-    z-index:0;
-    transition: opacity .25s ease;
-  }
-  .project-card:nth-child(1)::before{ background: var(--indigo); }
-  .project-card:nth-child(2)::before{ background: var(--coral); }
-  .project-card:nth-child(3)::before{ background: var(--amber); }
-
-  .project-card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px -18px rgba(20,18,31,0.25);
-    border-color: transparent;
-  }
-  .project-card:hover::before{ opacity:.55; }
-
-  .project-top{
-    position:relative; z-index:1;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:16px;
-    flex-wrap:wrap;
-  }
-  .project-num{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    font-weight:500;
-    color: var(--ink-soft);
-  }
-  .project-name{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:22px;
-    margin-top:6px;
-  }
-  .project-meta{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11.5px;
-    color: var(--ink-soft);
-    text-align:right;
-  }
-  .project-desc{
-    position:relative; z-index:1;
-    margin-top:12px;
-    color:#3D3B4A;
-    font-size:14.5px;
-    max-width: 620px;
-  }
-  .project-stack{ position:relative; z-index:1; margin-top:18px; display:flex; gap:8px; flex-wrap:wrap; }
-  .stack-pill{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11px;
-    font-weight:500;
-    background: var(--ink);
-    color: var(--bg);
-    padding:4px 11px;
-    border-radius:100px;
-  }
-  .project-links{
-    position:relative; z-index:1;
-    margin-top:20px;
-    display:flex;
-    gap:20px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:12.5px;
-    font-weight:500;
-  }
-  .project-links a{ text-decoration:none; color: var(--indigo); display:inline-flex; align-items:center; gap:4px; }
+  .project-card:hover{ border-color: var(--accent); transform: translateY(-3px); }
+  .project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+  .project-num{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color: var(--accent); }
+  .project-name{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:18px; margin-top:6px; }
+  .project-meta{ font-family:'JetBrains Mono', monospace; font-size:11px; color: var(--text-dim); text-align:right; }
+  .project-desc{ margin-top:12px; color:#C9C7D6; font-size:14px; max-width:640px; }
+  .project-stack{ margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; }
+  .stack-pill{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color: var(--accent2); border:1px solid var(--line); padding:3px 10px; border-radius:100px; }
+  .project-links{ margin-top:18px; display:flex; gap:18px; font-family:'JetBrains Mono', monospace; font-size:12px; }
+  .project-links a{ text-decoration:none; color: var(--accent); }
   .project-links a:hover{ text-decoration:underline; }
 
+  /* ---------- GAME ---------- */
+  .game-card{ background: var(--card); border:1px solid var(--line); border-radius:10px; padding: 26px; }
+  .game-wrap{ display:flex; flex-direction:column; align-items:center; gap:20px; }
+  #fitLineCanvas{ width:100%; max-width:700px; height:auto; background: var(--bg-alt); border:1px solid var(--line); border-radius:10px; touch-action:none; cursor:grab; }
+  #fitLineCanvas:active{ cursor:grabbing; }
+  .game-hud{ width:100%; max-width:700px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .score-box{ display:flex; flex-direction:column; gap:2px; }
+  .score-label{ font-family:'JetBrains Mono', monospace; font-size:11px; color: var(--text-dim); letter-spacing:.06em; text-transform:uppercase; }
+  .score-value{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size:30px; color: var(--accent); }
+  .best-fit-note{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color: var(--green); }
+  .game-controls{ display:flex; gap:10px; }
+  .game-btn{ font-family:'JetBrains Mono', monospace; font-size:12.5px; border:1px solid var(--line); background: var(--bg-alt); color: var(--text); padding:9px 16px; border-radius:8px; cursor:pointer; transition: all .2s ease; }
+  .game-btn:hover{ border-color: var(--accent); color: var(--accent); }
+  .game-btn.primary{ background: var(--accent); color:#0A0A0E; border-color: var(--accent); font-weight:600; }
+  .game-btn.primary:hover{ background: var(--accent2); border-color: var(--accent2); }
+
   /* ---------- FOOTER ---------- */
-  footer{
-    padding: 44px 0 60px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    color: var(--ink-soft);
-  }
+  footer{ padding: 70px 0 60px; border-top: 1px solid var(--line); }
+  .footer-title{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size: clamp(24px,4vw,36px); line-height:1.3; }
+  .footer-title .accent{ color: var(--accent); }
+  .footer-links{ margin-top: 30px; display:flex; gap:14px; flex-wrap:wrap; }
 
-  @media (prefers-reduced-motion: reduce){
-    .orb, h1 .accent, .eyebrow, h1, .role-line, .contact-row{ animation:none !important; opacity:1 !important; transform:none !important; }
+  @media (max-width:720px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .nav-links{ gap:16px; font-size:11px; }
   }
-
   @media (max-width:600px){
     .wrap{ padding:0 20px; }
-    .hero{ padding:70px 0 60px; }
     .project-top{ flex-direction:column; }
     .project-meta{ text-align:left; }
   }
@@ -293,60 +174,70 @@
 </head>
 <body>
 
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">drishti.dev</span>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#play">play</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <section class="hero">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-    <div class="hero-content">
-      <span class="eyebrow">✦ Available for opportunities</span>
-      <h1>Drishti Parekh</h1>
-      <p class="role-line">Hi, I'm a data science student interested in statistical modeling, machine learning, and sports analytics.</p>
-      <div class="contact-row">
-        <a href="#projects" class="primary">See my work →</a>
-        <a href="mailto:parekhdrishti03@gmail.com">Email</a>
-        <a href="https://github.com/parekhdrishti">GitHub</a>
-        <a href="https://www.linkedin.com/in/drishtiparekh/">LinkedIn</a>
-        <a href="https://raw.githubusercontent.com/parekhdrishti/Portfolio/fe22c0a640e8bbaf542649c6de443531090413a4/Resume--Drishti%20Parekh..pdf.pdf">Resume ↓</a>
+  <section class="hero" id="top">
+    <span class="eyebrow"><span class="dot"></span>open to opportunities</span>
+    <h1>Turning raw data into<br><span class="accent">confident decisions.</span></h1>
+    <p class="role-line">I build machine learning systems that ship — from LLM-powered tools to reinforcement learning models to statistical analysis that actually answers the question.</p>
+    <div class="contact-row">
+      <a href="#projects" class="btn primary">View projects →</a>
+      <a href="mailto:parekhdrishti03@gmail.com" class="btn">Email</a>
+      <a href="https://github.com/parekhdrishti" class="btn">GitHub</a>
+      <a href="https://www.linkedin.com/in/drishtiparekh/" class="btn">LinkedIn</a>
+      <a href="https://raw.githubusercontent.com/parekhdrishti/Portfolio/fe22c0a640e8bbaf542649c6de443531090413a4/Resume--Drishti%20Parekh..pdf.pdf" class="btn">Resume ↓</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <span class="section-tag">01 // ABOUT</span>
+    <div class="about-grid">
+      <p class="about-text">I build tools that make machine learning genuinely useful — not just impressive in a notebook, but working in a live product someone can actually use. I'm most drawn to problems where <b>data has to turn into a decision</b>: which video moments matter, which employee is at risk, what actually predicts a win. What sets my approach apart is that I don't stop at the model — I <span class="highlight">ship it</span>, wrap it in a real interface, and make sure it works end to end.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+          <span class="terminal-title">about.sql</span>
+        </div>
+        <div class="terminal-body">
+          <span class="kw">SELECT</span> drishti<br>
+          <span class="kw">FROM</span> engineers<br>
+          <span class="kw">WHERE</span> skills @&gt; <span class="str">'{python, ml, product}'</span><br>
+          <span class="kw">ORDER BY</span> curiosity <span class="kw">DESC</span><br>
+          <span class="kw">LIMIT</span> 1;<br><br>
+          <span class="cmt">-- 1 row returned in 0.02s</span><br>
+          <span style="color:var(--green)">✓</span> status = ready_to_build
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-head">
-      <span class="section-num">1</span>
-      <h2 class="section-title">About</h2>
-    </div>
-    <p class="about-text">I build tools that make machine learning genuinely useful — not just impressive in a notebook, but working in a live product someone can actually use. I'm most drawn to problems where data has to turn into a decision: which video moments matter, which employee is at risk, what actually predicts a win. What sets my approach apart is that I don't stop at the model — I ship it, wrap it in a real interface, and make sure it works end to end.</p>
-    <div class="skills">
-      <span class="skill">Python</span>
-      <span class="skill">TypeScript</span>
-      <span class="skill">React</span>
-      <span class="skill">PostgreSQL</span>
-      <span class="skill">AWS</span>
-      <span class="skill">Docker</span>
-    </div>
-  </section>
-
   <section class="section" id="projects">
-    <div class="section-head">
-      <span class="section-num">2</span>
-      <h2 class="section-title">Projects</h2>
-    </div>
+    <span class="section-tag">02 // PROJECTS</span>
 
     <div class="project-grid">
 
-      <!-- Duplicate this block for each project -->
       <div class="project-card">
         <div class="project-top">
           <div>
-            <div class="project-num">PROJECT 01</div>
+            <div class="project-num">PROJECT_01</div>
             <div class="project-name">Reel — YouTube Video Summarizer</div>
           </div>
           <div class="project-meta">Solo project<br>2026</div>
         </div>
-        <p class="project-desc">Paste a YouTube URL, get a structured summary — overview, audience, and 5–10 key points each tied to a timestamp in the video. Also includes a custom-trained text classifier that predicts video category (tutorial, vlog, interview, review, comedy, educational) from the transcript with a confidence score, trained from scratch on a self-built labeled dataset.</p>
+        <p class="project-desc">Paste a YouTube URL, get a structured summary — overview, audience, and 5–10 key points each tied to a timestamp in the video. Includes a custom-trained text classifier that predicts video category from the transcript with a confidence score, trained from scratch on a self-built labeled dataset.</p>
         <div class="project-stack">
           <span class="stack-pill">Python</span>
           <span class="stack-pill">FastAPI</span>
@@ -356,19 +247,19 @@
         </div>
         <div class="project-links">
           <a href="https://yt-summarizer-0aui.onrender.com/">Live demo →</a>
-          <a href="https://github.com/parekhdrishti/yt-summarizer">Source code →</a>
+          <a href="#">Source code →</a>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-top">
           <div>
-            <div class="project-num">PROJECT 02</div>
+            <div class="project-num">PROJECT_02</div>
             <div class="project-name">DEMI — Employee Attrition Prevention System</div>
           </div>
           <div class="project-meta">Solo project<br>2025</div>
         </div>
-        <p class="project-desc">A production-ready Flask app that uses Fitted Q Iteration (offline reinforcement learning) to predict employee attrition risk and recommend targeted retention interventions. Learns a policy from 1,470 employee records, hits 86% prediction accuracy, and surfaces intervention recommendations with estimated business ROI through a clean web UI and JSON API. Trains all models on-demand from source — no pickle files.</p>
+        <p class="project-desc">A production-ready Flask app that uses Fitted Q Iteration (offline reinforcement learning) to predict employee attrition risk and recommend targeted retention interventions. Learns a policy from 1,470 employee records, hits 86% prediction accuracy, and surfaces ROI-backed recommendations through a web UI and JSON API. Trains all models on-demand — no pickle files.</p>
         <div class="project-stack">
           <span class="stack-pill">Python</span>
           <span class="stack-pill">Flask</span>
@@ -384,12 +275,12 @@
       <div class="project-card">
         <div class="project-top">
           <div>
-            <div class="project-num">PROJECT 03</div>
+            <div class="project-num">PROJECT_03</div>
             <div class="project-name">F1 Qualifying Performance &amp; Race Outcomes</div>
           </div>
           <div class="project-meta">Data analysis<br>2025</div>
         </div>
-        <p class="project-desc">A statistical study of 7,134 Formula 1 race entries (2000–2024) testing how strongly qualifying position predicts race outcome. Found a Spearman correlation of 0.785 between qualifying and finishing position, an average finish within 3.06 places of the grid slot, and podium rates of 73.93% for Top 3 starters versus 1.86% for P11+. Built an interactive Streamlit dashboard for exploring the trends by team, driver, and era.</p>
+        <p class="project-desc">A statistical study of 7,134 Formula 1 race entries (2000–2024) testing how strongly qualifying position predicts race outcome. Found a Spearman correlation of 0.785, an average finish within 3.06 places of the grid slot, and podium rates of 73.93% for Top 3 starters versus 1.86% for P11+. Built an interactive Streamlit dashboard for exploring trends by team, driver, and era.</p>
         <div class="project-stack">
           <span class="stack-pill">Python</span>
           <span class="stack-pill">Pandas</span>
@@ -399,20 +290,212 @@
           <span class="stack-pill">Plotly</span>
         </div>
         <div class="project-links">
-          <a href="https://f1-qualifying-performance-and-race-outcomes-3z4txjj6drypztbran.streamlit.app/">Live demo →</a>
-          <a href="https://github.com/parekhdrishti/F1-Qualifying-Performance-and-Race-Outcomes">Source code →</a>
+          <a href="#">Live demo →</a>
+          <a href="#">Source code →</a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <footer>
-    <span>Made with energy, 2026.</span>
-    <span>Last updated — August</span>
+  <section class="section" id="play">
+    <span class="section-tag">03 // PLAY A GAME</span>
+    <p class="about-text" style="margin-bottom:26px;">Drag the two ends of the line to fit the scattered points as closely as you can. Your R² score updates live — the same metric behind the F1 model above.</p>
+    <div class="game-card">
+      <div class="game-wrap">
+        <canvas id="fitLineCanvas" width="700" height="400"></canvas>
+        <div class="game-hud">
+          <div class="score-box">
+            <span class="score-label">Your R²</span>
+            <span class="score-value" id="r2Value">0.00</span>
+            <span class="best-fit-note" id="bestFitNote"></span>
+          </div>
+          <div class="game-controls">
+            <button id="revealBtn" class="game-btn">Reveal best fit</button>
+            <button id="newRoundBtn" class="game-btn primary">New round</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="footer-title">Open to connecting and contributing<br>to meaningful work in <span class="accent">data, analytics,<br>and machine learning.</span></h2>
+    <div class="footer-links">
+      <a href="mailto:parekhdrishti03@gmail.com" class="btn">Email</a>
+      <a href="https://github.com/parekhdrishti" class="btn">GitHub</a>
+      <a href="https://www.linkedin.com/in/drishtiparekh/" class="btn">LinkedIn</a>
+      <a href="https://raw.githubusercontent.com/parekhdrishti/Portfolio/fe22c0a640e8bbaf542649c6de443531090413a4/Resume--Drishti%20Parekh..pdf.pdf" class="btn primary">Download Resume ↓</a>
+    </div>
   </footer>
 
 </div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('fitLineCanvas');
+  const ctx = canvas.getContext('2d');
+  const r2Display = document.getElementById('r2Value');
+  const bestFitNote = document.getElementById('bestFitNote');
+  const revealBtn = document.getElementById('revealBtn');
+  const newRoundBtn = document.getElementById('newRoundBtn');
+
+  const W = 700, H = 400;
+  const PAD = 50;
+  const X0 = PAD, X1 = W - PAD;
+
+  let points = [];
+  let leftY = H/2, rightY = H/2;
+  let dragging = null;
+  let revealed = false;
+  let bestLine = null;
+
+  function generatePoints(){
+    points = [];
+    const n = 22;
+    const startY = 80 + Math.random()*100;
+    const endY = 80 + Math.random()*240;
+    for(let i=0;i<n;i++){
+      const t = i/(n-1);
+      const x = X0 + t*(X1-X0);
+      const trendY = startY + t*(endY-startY);
+      const noise = (Math.random()-0.5)*90;
+      let y = trendY + noise;
+      y = Math.max(30, Math.min(H-30, y));
+      points.push({x,y});
+    }
+  }
+
+  function computeR2(ly, ry){
+    let ssRes = 0, ssTot = 0;
+    const meanY = points.reduce((s,p)=>s+p.y,0)/points.length;
+    points.forEach(p=>{
+      const t = (p.x - X0)/(X1 - X0);
+      const predY = ly + t*(ry-ly);
+      ssRes += (p.y - predY)**2;
+      ssTot += (p.y - meanY)**2;
+    });
+    return ssTot === 0 ? 1 : 1 - ssRes/ssTot;
+  }
+
+  function computeBestFit(){
+    const n = points.length;
+    const mx = points.reduce((s,p)=>s+p.x,0)/n;
+    const my = points.reduce((s,p)=>s+p.y,0)/n;
+    let num=0, den=0;
+    points.forEach(p=>{ num += (p.x-mx)*(p.y-my); den += (p.x-mx)**2; });
+    const slope = den === 0 ? 0 : num/den;
+    const intercept = my - slope*mx;
+    const bestLy = slope*X0 + intercept;
+    const bestRy = slope*X1 + intercept;
+    return { ly: bestLy, ry: bestRy, r2: computeR2(bestLy, bestRy) };
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    ctx.strokeStyle = '#232330';
+    ctx.lineWidth = 1;
+    for(let gx=X0; gx<=X1; gx+=58){
+      ctx.beginPath(); ctx.moveTo(gx,20); ctx.lineTo(gx,H-20); ctx.stroke();
+    }
+
+    ctx.fillStyle = '#B18CFF';
+    points.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 5, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    if(revealed && bestLine){
+      ctx.setLineDash([6,6]);
+      ctx.strokeStyle = '#6EE7B7';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(X0, bestLine.ly);
+      ctx.lineTo(X1, bestLine.ry);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    ctx.strokeStyle = '#FF4FD8';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(X0, leftY);
+    ctx.lineTo(X1, rightY);
+    ctx.stroke();
+
+    [[X0,leftY],[X1,rightY]].forEach(([hx,hy])=>{
+      ctx.fillStyle = '#E9E7F2';
+      ctx.beginPath();
+      ctx.arc(hx, hy, 8, 0, Math.PI*2);
+      ctx.fill();
+      ctx.fillStyle = '#0A0A0E';
+      ctx.beginPath();
+      ctx.arc(hx, hy, 3.5, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    const r2 = computeR2(leftY, rightY);
+    r2Display.textContent = r2.toFixed(2);
+  }
+
+  function getCanvasPos(evt){
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = W/rect.width, scaleY = H/rect.height;
+    const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+    const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+    return { x: (clientX-rect.left)*scaleX, y: (clientY-rect.top)*scaleY };
+  }
+
+  function startDrag(evt){
+    const pos = getCanvasPos(evt);
+    const distLeft = Math.hypot(pos.x-X0, pos.y-leftY);
+    const distRight = Math.hypot(pos.x-X1, pos.y-rightY);
+    if(distLeft < 40 && distLeft <= distRight) dragging = 'left';
+    else if(distRight < 40) dragging = 'right';
+    else dragging = (Math.abs(pos.x-X0) < Math.abs(pos.x-X1)) ? 'left' : 'right';
+    evt.preventDefault();
+  }
+
+  function moveDrag(evt){
+    if(!dragging) return;
+    const pos = getCanvasPos(evt);
+    const y = Math.max(20, Math.min(H-20, pos.y));
+    if(dragging === 'left') leftY = y; else rightY = y;
+    draw();
+    evt.preventDefault();
+  }
+
+  function endDrag(){ dragging = null; }
+
+  canvas.addEventListener('mousedown', startDrag);
+  canvas.addEventListener('mousemove', moveDrag);
+  window.addEventListener('mouseup', endDrag);
+  canvas.addEventListener('touchstart', startDrag, {passive:false});
+  canvas.addEventListener('touchmove', moveDrag, {passive:false});
+  canvas.addEventListener('touchend', endDrag);
+
+  revealBtn.addEventListener('click', ()=>{
+    bestLine = computeBestFit();
+    revealed = true;
+    bestFitNote.textContent = `Best possible R²: ${bestLine.r2.toFixed(2)}`;
+    draw();
+  });
+
+  newRoundBtn.addEventListener('click', ()=>{
+    generatePoints();
+    leftY = H/2; rightY = H/2;
+    revealed = false;
+    bestLine = null;
+    bestFitNote.textContent = '';
+    draw();
+  });
+
+  generatePoints();
+  draw();
+})();
+</script>
 
 </body>
 </html>
